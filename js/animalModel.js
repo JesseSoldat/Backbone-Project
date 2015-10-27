@@ -1,6 +1,6 @@
-import Backbone from 'backbone';
+import Backbone from 'backbone'; // use backbone in our project
 
-let animalModel = Backbone.Model.extend({
+let animalModel = Backbone.Model.extend({  // use backbone Model constructor
 
   urlRoot: 'https://api.parse.com/1/classes/people',
 
@@ -9,4 +9,4 @@ let animalModel = Backbone.Model.extend({
 });
 
 
-export default animalModel;
+export default animalModel;  // allows us to use this model in other files

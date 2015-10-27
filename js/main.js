@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import _ from 'underscore';
-import moment from 'moment';
+import moment from 'moment'; 
 
 const APP_ID = 'aJPRQ7llN0TTK30rxbaJQn7feBmVlNzRap4dPf0Q';
 const API_KEY = 'rQz2EidDueMXGFT74GV1MsTxKDNLQnBMflcDWBuZ';
@@ -26,12 +26,12 @@ function renderAnimal() {
   // iterate each of the models
   animals.each(function(animal){
     
-    // person is an instance of PersonModel
+    // animals is an instance of animalModel
 
-    // grab raw data from person model
+    // grab raw data from animalModel
     let data = animal.toJSON();
     console.log('data', data);
-    console.log('test');
+   
     
     // pass the data to our template
     let templateString = animalTemplate(data);
@@ -48,6 +48,7 @@ function renderAnimal() {
   $('body').html($ul);
 }
 
+// call for all the data on the Parse Database and .then give it to the renderAnimal function
 animals.fetch().then(renderAnimal);
 
 

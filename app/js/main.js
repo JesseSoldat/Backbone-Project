@@ -11,13 +11,17 @@ var _backbone = require('backbone');
 
 var _backbone2 = _interopRequireDefault(_backbone);
 
+// use backbone in our project
+
 var _animalModel = require('./animalModel');
 
 var _animalModel2 = _interopRequireDefault(_animalModel);
 
-var animalCollection = _backbone2['default'].Collection.extend({
+// use the urlRoot: and idAttribute: 'objectId'
 
-  url: 'https://api.parse.com/1/classes/Animals',
+var animalCollection = _backbone2['default'].Collection.extend({ // use backbone Collection constructor
+
+  url: 'https://api.parse.com/1/classes/Animals', //url has to end with the name of the app
 
   model: _animalModel2['default'],
 
@@ -43,7 +47,9 @@ var _backbone = require('backbone');
 
 var _backbone2 = _interopRequireDefault(_backbone);
 
-var animalModel = _backbone2['default'].Model.extend({
+// use backbone in our project
+
+var animalModel = _backbone2['default'].Model.extend({ // use backbone Model constructor
 
   urlRoot: 'https://api.parse.com/1/classes/people',
 
@@ -52,6 +58,7 @@ var animalModel = _backbone2['default'].Model.extend({
 });
 
 exports['default'] = animalModel;
+// allows us to use this model in other files
 module.exports = exports['default'];
 
 },{"backbone":5}],3:[function(require,module,exports){
@@ -62,7 +69,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 function animalTemplate(data) {
-  return "\n    <li>" + data.Name + " is a " + data.Type + "</li>\n  ";
+  return "\n    <li>" + data.Name + " is a " + data.Type + ". This animal likes to eat " + data.Diet + ".</li>\n    <br><br>\n  ";
 }
 
 exports["default"] = animalTemplate;
@@ -113,12 +120,11 @@ function renderAnimal() {
   // iterate each of the models
   animals.each(function (animal) {
 
-    // person is an instance of PersonModel
+    // animals is an instance of animalModel
 
-    // grab raw data from person model
+    // grab raw data from animalModel
     var data = animal.toJSON();
     console.log('data', data);
-    console.log('test');
 
     // pass the data to our template
     var templateString = (0, _animalTemplate2['default'])(data);
@@ -135,6 +141,7 @@ function renderAnimal() {
   (0, _jquery2['default'])('body').html($ul);
 }
 
+// call for all the data on the Parse Database and .then give it to the renderAnimal function
 animals.fetch().then(renderAnimal);
 
 },{"./animalCollection":1,"./animalTemplate":3,"jquery":6,"moment":7,"underscore":8}],5:[function(require,module,exports){
